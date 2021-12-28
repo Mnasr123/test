@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "stud";
+}
+
+<h2>stud</h2>
+
+<style>
+    #ajaxSpinnerImage {
+        display: none;
+    }
+</style>
+
+<div id="ajaxSpinnerContainer">
+    <img src="~/loading-x.gif" id="ajaxSpinnerImage" title="working..." />
+</div>
+
+<br /><br />
+<button id="btn1">Getall</button>
+<div id="test1"></div>
+<div id="test2"></div>
+@section Scripts{
+
+    <script type="text/javascript">
+        debugger
+        $(document).ready(function () {
+            debugger
+            $.ajax({
+                url: '/API/Main/GetItemsbySeX',
+
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+
+                    var out = "";
+                    for (var i = 0; i < data.length; i++) {
+
+                        out += "<hr />";
+                        out += "Student ID=" + data[i].id;
+                        out += data[i].name;
+                        out += data[i].passward;
+
+
+                    }
+                    $("#test1").html(out);
+
+                    
+                },
+                error: function (data) {
+                    alert("Failed loading! Please try again.");
+                }
+            });
+        });
+    </script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+
+    @*<script>
+            $(document).ready(function () {
+                $("#btn1").click(function () {
+                    $.ajax({
+
+                        url: '/api/APIStudent/GetStudents/' + 1, type: 'GET',
+                        dataType: 'json'
+                    }).done(function (data) {
+
+
+                        var out = "";
+
+
+                        out += "<hr />";
+                        out += "Student ID=" + data.ID;
+                        out += data.Name;
+                        out += data.Surname;
+
+
+
+                        $("#test2").html(out);
+                    })
+
+                });
+
+            });
+        </script>*@
+}
+@*<div id="Loading">
+        <img src="~/loading-x.gif" />
+    </div>*@

@@ -1,0 +1,35 @@
+[
+
+  {
+
+    "TypeID": 1,
+    "Slide": ".Feedback",
+    "Tname": "Feedback"
+
+  },
+  {
+    "TypeID": 2,
+    "Slide": ".ecommerce",
+    "Tname": "CANVAS"
+  },
+  {
+    "TypeID": 3,
+    "Slide": ".cms",
+    "Tname": "VINIL"
+
+  },
+    {
+      "TypeID": 4,
+      "Slide": ".logo",
+      "Tname": "Collection"
+    },
+    {
+      "TypeID": 4,
+      "Slide": ".logo",
+      "Tname": "ORDERS"
+    }
+
+
+    ]
+
+  

@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "HomeView";
+    Layout = "~/Views/Shared/Master.cshtml";
+}
+
+<h2>bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</h2>
+
+@section Scripts{
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous">
+
+    </script>
+    <script>
+
+
+        $(document).ready(function () {
+
+
+            $.getJSON('/Formdesigner/ItemCategory.json', function (models) {
+                $("#category").empty();
+              $('#category').append('<button class="button is-checked" data-filter="*">show all</button>')
+                for (let i = 0; i < models.length; i++) {
+
+                    //$(document).find('#category').append('<li><a href="' + models[i].Slide + '" data-toggle="tab">' + models[i].Tname + '</a></li>');
+                    $(document).find('#category').append('<button class="button" data-filter="' + models[i].Slide + '">' + models[i].Tname+'</button>');
+
+                };
+            });
+        });
+
+
+
+
+
+    </script>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            debugger;
+            $.ajax({
+                url: '/API/Main/GetItemsbySeX',
+
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    $("#team").empty();
+                    //console.log(data);
+                    $("#team").append("<div class='title'><h2>Our Team</h2><p>Meet some of our lovely, passionate, positive people.</p></div>")
+                    $.each(data, function (i, item) {
+                        //$("#men").append("<div class='card col-md-4'><div class='container'><img src='" + item.Img_Path + "' alt='" + item.Store_ID+"' width='100' height='100'><input type='text' id='imagePath' hidden value='" + item.Img_Path + "/>'<div> <div class='form-group'>" + item..Item_Name + " <br />  </div> </div>  <br /> <br />  <input id='lnkSelectImg' SelectedImgId=" + item.ID + " type='submit'value='Save'class='btn btn-danger'/> <a id='lnkSelectImg22'class='btn btn-success btn-sm' SelectedImgId=" + item.Item_Name + "> select <i class='fa fa-photo'></i>  </a></div>"
+                        $("#team").append("<div class='col-xs-12 col-sm-6 col-md-3 wow fadeInUp animated' data-wow-delay='.1s'><div class='timg'><img src='" + item.image + "'/></div><div class='t-box'><h3>MOHD SAIF</h3><span>Content Writer</span><ul class='social-links'><li><a class='wow fadeInUp animated' href='index.html'><i class='fa fa-facebook'></i></a></li><li><a data-wow-delay='.1s' class='wow fadeInUp animated' href='index.htm'><i class='fa fa-twitter'></i></a></li><li><a data-wow-delay='.2s' class='wow fadeInUp animated' href='index.htm'><i class='fa fa-google-plus'></i></a></li></ul></div></div>"
+
+                        )
+
+                    });
+                },
+                error: function (data) {
+                    alert("Failed loading! Please try again.");
+                }
+            });
+        });
+    </script>
+
+
+}
